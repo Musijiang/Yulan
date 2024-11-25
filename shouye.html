@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>测试 - Layui</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./logoya.png" type="images/x-icon"/>
+  <style type="text/css">
+	.layui-form-checkbox{
+		float:right;
+	}
+  	.layui-form-checkbox[lay-skin=primary]>i{
+		border-radius:10px;
+	}
+	.layui-form-checked[lay-skin=primary]>i {
+	    border-color: #2d80ee !important;
+	    background-color: #2d80ee;
+	    color: #fff;
+	}
+	#checkbox-box{
+		display: none;
+	}
+	.fuxuan{
+		position:absolute;
+		z-index:10;
+	}
+	#fuxuan1{
+		right:24px;
+		top: 122px;
+	}
+	#fuxuan2{
+		right:24px;
+		top: 210px;
+	}
+	#fuxuan3{
+		right:24px;
+		top: 298px;
+	}
+	
+  </style>
+</head>
+<body>
+	<div class="layui-form" id="checkbox-box">
+		<div class="fuxuan" id="fuxuan1">
+			<input type="checkbox" name="A1">
+		</div>
+		<div class="fuxuan" id="fuxuan2">
+			<input type="checkbox" name="A2">
+		</div>
+		<div class="fuxuan" id="fuxuan3">
+			<input type="checkbox" name="A3">
+		</div>
+	</div>
+	<div class="header-navigator">
+		物联控制
+	</div>
+	<div class="header-navigator2">
+		<div class="header-navigator2-bottom">
+			<div class="header-navigator2-bottom-item" style="padding-left:18px">
+				<i class="layui-icon layui-icon-close"></i>
+			</div>
+			<div class="header-navigator2-bottom-item" id="yixuanze"> </div>
+			<div class="header-navigator2-bottom-item" style="padding-right:18px">
+				<i class="layui-icon layui-icon-ok"></i>
+			</div>
+		</div>
+	</div>
+	<div class="wulian-container">
+		<div id="haveGotten">
+			<div class="yi-pei-dui">
+				已配对
+			</div>
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">
+							RJ100012
+						</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">RJ100012</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">RJ100012</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-container">
+				<button type="button" id="addDevice"
+				class="layui-btn layui-btn-primary layui-btn-radius layui-border-blue">
+					<i class="layui-icon layui-icon-addition"></i>添加新设备
+				</button>
+			</div>
+		</div>
+		<div id="search-device" class="layui-hide">
+			<div class="qi-ta">
+				其他设备
+			</div>
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">RJ100012</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">RJ100012</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-container">
+				<button type="button" class="layui-btn layui-btn-primary layui-btn-radius layui-border-red">
+					<i class="layui-icon layui-icon-search"></i>停止搜索
+				</button>
+			</div>
+		</div>
+	  
+	</div>
+	<div class="footer-navigator">
+		<div class="navi-item navi-this">
+			<div class="footer-navi-icon">
+				<i class="layui-icon layui-icon-home"></i>
+			</div>
+			<div class="footer-navi-text">首页</div>
+		</div>
+	    <div class="navi-item" id="tiaozhuan">
+			<div class="footer-navi-icon">
+				<i class="layui-icon layui-icon-about"></i>
+			</div>
+			<div class="footer-navi-text">关于</div>
+		</div>
+	</div>
+
+<!-- body 末尾处引入 layui -->
+<script src="layui/layui.js"></script>
+<script>
+layui.use(function(){
+  var layer = layui.layer;
+  var form = layui.form;
+  var laydate = layui.laydate;
+  var util = layui.util;
+  let $ = layui.jquery;
+  
+  form.render();
+  
+  let checkNum = 0;
+  form.on('checkbox', function(data){
+     var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+     var checked = elem.checked; // 获得 checkbox 选中状态
+     var value = elem.value; // 获得 checkbox 值
+     var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+	 if(elem.checked){
+		 checkNum++;
+	 }else{
+		 checkNum--;
+	 }
+     
+     //layui.layer.msg('选中数量'+ checkNum);
+	 $('#yixuanze').text('已选择'+ checkNum);
+   });
+  //电脑长按事件
+  /* function longPress(element, callback) {
+      var timer;
+      element.addEventListener('mousedown', function() {
+          timer = setTimeout(callback, 1000); // 设置长按超时时间为1000毫秒
+      });
+      element.addEventListener('mouseup', function() {
+          clearTimeout(timer); // 清除定时器
+      });
+      element.addEventListener('mouseleave', function() {
+          clearTimeout(timer); // 清除定时器
+      });
+  }
+  
+  longPress(document.getElementById('addDevice'), function() {
+          alert('长按事件触发!');
+      }); */
+    let timeOutEvent = null;
+    let longClick =0;
+    $(".layui-panel").on({
+        touchstart: function(evt){
+			evt.preventDefault();
+			evt.stopPropagation();
+            longClick=0;//设置初始为0
+            timeOutEvent = setTimeout(function(){
+                //此处为长按事件-----在此显示遮罩层及删除按钮
+    			$('#checkbox-box').fadeIn();
+				$('.header-navigator2').fadeIn();
+                longClick=1;//假如长按，则设置为1
+            },200);
+        },
+        touchmove: function(evt){
+			evt.preventDefault();
+            clearTimeout(timeOutEvent);
+            timeOutEvent = 0;
+            
+        },
+        touchend: function(evt){
+			evt.preventDefault();
+            clearTimeout(timeOutEvent);
+            if(timeOutEvent!=0 && longClick==0){//点击
+                //此处为点击事件----在此处添加跳转详情页
+            }
+            return false;
+        }
+    });
+  
+  $('#tiaozhuan').click(function(){
+	window.location.href = `./guanyu.html`;
+  });
+  
+  $('#addDevice').click(function(){
+	  $(this).fadeOut();
+	  $('#search-device').removeClass('layui-hide');
+  })
+  
+});
+</script>
+</body>
+</html>

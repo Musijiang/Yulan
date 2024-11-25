@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>关于物联控制</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./logoya.png" type="images/x-icon"/>
+  <style type="text/css">
+	body{
+		background-color:#f6f6f6;
+		background-image: none;
+	}
+	.device-rect{
+		width:58px;
+		height:58px;
+		background-color: #9C9C9C;
+	}
+	.footer{
+		position:fixed;
+		bottom:52px;
+		text-align:center;
+		white-space: pre-line;
+		width:100%;
+		color:#979c9e;
+	}
+	p{
+		margin-top:12px;
+		font-size:15px;
+		color:#979c9e;
+	}
+  </style>
+</head>
+<body>
+	
+	<div class="header-navigator">
+		<i class="layui-icon layui-icon-left" id="tiaozhuan"></i>
+		关于物联控制
+	</div>
+
+	<div class="guanyu-container" style="text-align:center;color:#b8b8b8;padding-top:91px;">
+		<div class="device-rect"></div>
+		<p>当前版本 9.10.701.8860-MI APP STORE</p>
+	</div>
+	<div class="footer">
+		ICP备案号:京ICP备10046444号-67A>
+		copyright @ 2014-2024 物联保留所有权利
+	</div>
+
+<!-- body 末尾处引入 layui -->
+<script src="layui/layui.js"></script>
+<script>
+layui.use(function(){
+  var layer = layui.layer;
+  var form = layui.form;
+  var laydate = layui.laydate;
+  var util = layui.util;
+  let $ = layui.jquery;
+  
+  form.render();
+  
+  $('#tiaozhuan').click(function(){
+  	window.location.href = `./guanyu.html`;
+  });
+  
+});
+</script>
+</body>
+</html>

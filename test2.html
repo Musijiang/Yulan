@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./layui/css/layui.css">
+		<title>长按事件示例</title>
+		
+	</head>
+	<body>
+		
+		<div class="layui-form">
+		  <input type="checkbox" name="AAA" title="默认" />
+		  <input type="checkbox" name="BBB" lay-text="选中"/> 
+		  
+		</div>
+		<script src="./layui/layui.js"></script>
+		<script type="text/javascript">
+			layui.use(function(){
+				let form = layui.form;
+				 form.on('checkbox', function(data){
+				    var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+				    var checked = elem.checked; // 获得 checkbox 选中状态
+				    var value = elem.value; // 获得 checkbox 值
+				    var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+				    
+				    layui.layer.msg('checked 状态: '+ elem.checked);
+				  });
+			})
+		</script>
+	</body>
+</html>

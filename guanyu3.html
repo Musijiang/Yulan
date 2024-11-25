@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>关于物联控制</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="shortcut icon" href="./logoya.png" type="images/x-icon"/>
+  <style type="text/css">
+	body{
+		background-color:white;
+		background-image: none;
+	}
+	
+	.update-title{
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.update-date{
+		font-size: 17px;
+		color: #b8b8b8;
+	}
+	
+	.update-title-small{
+		font-size: 16px;
+		font-weight: bold;
+		margin-top:24px;
+	}
+	.update-content{
+		font-size: 16px;
+		color: #b8b8b8;
+		white-space: pre-line;
+	}
+	
+  </style>
+</head>
+<body>
+	
+	<div class="header-navigator">
+		<i class="layui-icon layui-icon-left" id="tiaozhuan"></i>
+		更新详情
+	</div>
+	<div class="guanyu-container">
+		<div class="update-title">物联控制V6.11.0 主要更新</div>
+		<div class="update-date">2024-04-15</div>
+		<div class="update-title-small">
+			一、XXX
+		</div>
+		<div class="update-content">[空调软件更新说明]
+			*本次升级需要2~15分钟
+			*软件升级过程中，请勿进行断电、断网及解绑设备操作，以免升级失败或异常。
+			*升级失败后，设备保持联网状态，会自动开启固件升级或在插件内再次手动触发固件升级，耐心等待2～15min设备即可再次升级成功。
+		</div>
+		<div class="update-title-small">
+			二、XXX
+		</div>
+		<div class="update-content">[空调软件更新说明]
+			*本次升级需要2~15分钟
+			*软件升级过程中，请勿进行断电、断网及解绑设备操作，以免升级失败或异常。
+			*升级失败后，设备保持联网状态，会自动开启固件升级或在插件内再次手动触发固件升级，耐心等待2～15min设备即可再次升级成功。
+		</div>
+	</div>
+
+<!-- body 末尾处引入 layui -->
+<script src="layui/layui.js"></script>
+<script>
+layui.use(function(){
+  var layer = layui.layer;
+  var form = layui.form;
+  var laydate = layui.laydate;
+  var util = layui.util;
+  let $ = layui.jquery;
+  
+  form.render();
+  
+  $('#tiaozhuan').click(function(){
+  	window.location.href = `./guanyu2.html`;
+  });
+  
+});
+</script>
+</body>
+</html>
