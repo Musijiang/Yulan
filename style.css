@@ -29,7 +29,7 @@ body{
 
 .header-navigator2{
 	width:100%;
-	height:60px;
+	height:88px;
 	background-color:white;
 	display: none;
 	position: fixed;
@@ -39,7 +39,7 @@ body{
 .header-navigator2-bottom{
 	font-size: 24px;
 	position: relative;
-	bottom: -28px;
+	bottom: -54px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -122,15 +122,17 @@ body{
 }
 
 .btn-container{
-	margin-top:2rem;
+	margin-top:32px;
 	text-align:center;
 }
 
-#addDevice{
+#addDevice,#addDevice2,#quit-btn{
 	width:162px;
 	height:51px;
 	font-size: 15px;
+	background-color:white;
 	font-weight: bold;
+	border:none;
 }
 
 #search-device{

@@ -28,17 +28,15 @@
 	}
 	#fuxuan1{
 		right:24px;
-		top: 122px;
+		top: 158px;
 	}
 	#fuxuan2{
 		right:24px;
-		top: 210px;
+		top: 246px;
 	}
-	#fuxuan3{
-		right:24px;
-		top: 298px;
+	#yixuanze{
+		font-size:17px;
 	}
-	
   </style>
 </head>
 <body>
@@ -59,11 +57,11 @@
 	<div class="header-navigator2">
 		<div class="header-navigator2-bottom">
 			<div class="header-navigator2-bottom-item" style="padding-left:18px">
-				<i class="layui-icon layui-icon-close"></i>
+				<i class="layui-icon layui-icon-close" id="cuohao"></i>
 			</div>
 			<div class="header-navigator2-bottom-item" id="yixuanze"> </div>
 			<div class="header-navigator2-bottom-item" style="padding-right:18px">
-				<i class="layui-icon layui-icon-ok"></i>
+				<i class="layui-icon layui-icon-ok" id="duihao"></i>
 			</div>
 		</div>
 	</div>
@@ -92,23 +90,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="layui-panel">
-				<div class="device-rect">rect</div>
-				<div class="device-text">
-					<div class="vertical-flex-box">
-						<div class="divice-name">RJ100012</div>
-						<div class="divice-type">设备类型</div>
-					</div>
-				</div>
-			</div>
-			<div class="btn-container">
+			<div class="btn-container" id="addDeviceDiv">
 				<button type="button" id="addDevice"
 				class="layui-btn layui-btn-primary layui-btn-radius layui-border-blue">
 					<i class="layui-icon layui-icon-addition"></i>添加新设备
 				</button>
 			</div>
 		</div>
-		<div id="search-device" class="layui-hide">
+		<div id="search-device" style="margin-top: 22px;display:none;">
 			<div class="qi-ta">
 				其他设备
 			</div>
@@ -130,9 +119,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-container">
-				<button type="button" class="layui-btn layui-btn-primary layui-btn-radius layui-border-red">
+			<div class="layui-panel">
+				<div class="device-rect">rect</div>
+				<div class="device-text">
+					<div class="vertical-flex-box">
+						<div class="divice-name">RJ100012</div>
+						<div class="divice-type">设备类型</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-container" id="quit-btn-div">
+				<button type="button" id="quit-btn"
+				class="layui-btn layui-btn-primary layui-btn-radius layui-border-red">
 					<i class="layui-icon layui-icon-search"></i>停止搜索
+				</button>
+				<button type="button" id="addDevice2" style="display: none;"
+				class="layui-btn layui-btn-primary layui-btn-radius layui-border-blue">
+					<i class="layui-icon layui-icon-addition"></i>添加新设备
 				</button>
 			</div>
 		</div>
@@ -208,6 +211,7 @@ layui.use(function(){
                 //此处为长按事件-----在此显示遮罩层及删除按钮
     			$('#checkbox-box').fadeIn();
 				$('.header-navigator2').fadeIn();
+				$('#addDeviceDiv').fadeOut();
                 longClick=1;//假如长按，则设置为1
             },200);
         },
@@ -232,8 +236,27 @@ layui.use(function(){
   });
   
   $('#addDevice').click(function(){
+	  $('#addDeviceDiv').fadeOut();
+	  $('#search-device').fadeIn();
+  });
+  
+  $('#quit-btn').click(function(){
+  	  /* $('#search-device').fadeOut();
+	  $('#addDeviceDiv').fadeIn(); */
 	  $(this).fadeOut();
-	  $('#search-device').removeClass('layui-hide');
+	  $('#addDevice2').fadeIn();
+  });
+  $('#addDevice2').click(function(){
+  	  /* $('#search-device').fadeOut();
+  	  $('#addDeviceDiv').fadeIn(); */
+  	  $(this).fadeOut();
+  	  $('#quit-btn').fadeIn();
+  });
+  
+  $('#duihao,#cuohao').click(function(){
+	  $('#checkbox-box').fadeOut();
+	  $('.header-navigator2').fadeOut();
+	  $('#addDeviceDiv').fadeIn();
   })
   
 });
