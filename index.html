@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>测试 - Layui</title>
+  <title>首页</title>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./logoya.png" type="images/x-icon"/>
@@ -40,7 +40,7 @@
   </style>
 </head>
 <body>
-	<div class="layui-form" id="checkbox-box">
+	<div class="layui-form" id="checkbox-box" lay-filter="fuxuan">
 		<div class="fuxuan" id="fuxuan1">
 			<input type="checkbox" name="A1">
 		</div>
@@ -141,7 +141,7 @@
 		</div>
 	  
 	</div>
-	<div class="footer-navigator">
+	<div class="footer-navigator" id="footer1">
 		<div class="navi-item navi-this">
 			<div class="footer-navi-icon">
 				<i class="layui-icon layui-icon-home"></i>
@@ -153,6 +153,14 @@
 				<i class="layui-icon layui-icon-about"></i>
 			</div>
 			<div class="footer-navi-text">关于</div>
+		</div>
+	</div>
+	<div class="footer-navigator" id="footer2" style="display:none;">
+		<div class="navi-item navi-this">
+			<div class="footer-navi-icon">
+				<i class="layui-icon layui-icon-delete" style="color:#ff4d55;"></i>
+			</div>
+			<div class="footer-navi-text" style="color:black;">删除设备</div>
 		</div>
 	</div>
 
@@ -178,6 +186,10 @@ layui.use(function(){
 		 checkNum++;
 	 }else{
 		 checkNum--;
+	 }
+	 if(checkNum){
+		 $('#footer1').css('display','none');
+		 $('#footer2').css('display','flex');
 	 }
      
      //layui.layer.msg('选中数量'+ checkNum);
@@ -211,7 +223,11 @@ layui.use(function(){
                 //此处为长按事件-----在此显示遮罩层及删除按钮
     			$('#checkbox-box').fadeIn();
 				$('.header-navigator2').fadeIn();
-				$('#addDeviceDiv').fadeOut();
+				console.log();
+				if($('#search-device').css('display') == 'block'){
+					$('#search-device').css('opacity',0.5);
+				}
+				//$('#addDeviceDiv').fadeOut();
                 longClick=1;//假如长按，则设置为1
             },200);
         },
@@ -243,20 +259,34 @@ layui.use(function(){
   $('#quit-btn').click(function(){
   	  /* $('#search-device').fadeOut();
 	  $('#addDeviceDiv').fadeIn(); */
-	  $(this).fadeOut();
-	  $('#addDevice2').fadeIn();
+	  $(this).css('display','none');
+	  $('#addDevice2').css('display','inline-block');
   });
   $('#addDevice2').click(function(){
   	  /* $('#search-device').fadeOut();
   	  $('#addDeviceDiv').fadeIn(); */
-  	  $(this).fadeOut();
-  	  $('#quit-btn').fadeIn();
+  	  /* $(this).fadeOut();
+  	  $('#quit-btn').fadeIn(); */
+	  $(this).css('display','none');
+	  $('#quit-btn').css('display','inline-block');
   });
   
   $('#duihao,#cuohao').click(function(){
+	  layui.form.val('fuxuan',{A1: '',A2:''});
+	  checkNum = 0;
+	  $('#yixuanze').text('');
 	  $('#checkbox-box').fadeOut();
 	  $('.header-navigator2').fadeOut();
 	  $('#addDeviceDiv').fadeIn();
+	  
+	  $('#footer1').css('display','flex');
+	  $('#footer2').css('display','none');
+	  
+	  if($('#search-device').css('display') == 'block'){
+		$('#addDevice').css('display','none');;
+	  	$('#search-device').css('opacity',1);
+	  }
+	  
   })
   
 });
